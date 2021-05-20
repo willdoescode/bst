@@ -49,6 +49,12 @@ void insert(struct Node **head, int value)
   insert(&(*head)->right, value);
 }
 
+void insertList(struct Node **head, int arr[], int length)
+{
+  for (int i = 0; i < length; i++)
+    insert(head, arr[i]);
+}
+
 void invert(struct Node *head)
 {
   if (head == NULL)
