@@ -1,6 +1,9 @@
 #ifndef BST_H
 #define BST_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 struct Node
 {
   int value;
@@ -27,6 +30,33 @@ void deinit(struct Node *head)
   deinit(head->right);
 
   free(head);
+}
+
+void insert(struct Node **head, int value)
+{
+  if (*head == NULL)
+  {
+    *head = init(value);
+    return;
+  }
+
+  if ((*head)->value > value)
+  {
+    insert(&(*head)->left, value);
+    return;
+  }
+
+  insert(&(*head)->right, value);
+}
+
+void print(struct Node *head)
+{
+  if (head == NULL)
+    return;
+
+  print(head->left);
+  printf("%d", head->value);
+  print(head->right);
 }
 
 #endif // !BST_H
