@@ -49,13 +49,26 @@ void insert(struct Node **head, int value)
   insert(&(*head)->right, value);
 }
 
+void invert(struct Node *head)
+{
+  if (head == NULL)
+    return;
+
+  invert(head->left);
+  invert(head->right);
+
+  struct Node *temp = head->left;
+  head->left = head->right;
+  head->right = temp;
+}
+
 void print(struct Node *head)
 {
   if (head == NULL)
     return;
 
   print(head->left);
-  printf("%d", head->value);
+  printf(" %d ", head->value);
   print(head->right);
 }
 
