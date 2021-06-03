@@ -51,7 +51,7 @@ void insert(struct Node **head, int value)
 
 void insertList(struct Node **head, int arr[], int length)
 {
-  for (int i = 0; i < length; i++)
+  for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
     insert(head, arr[i]);
 }
 
